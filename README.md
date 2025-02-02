@@ -9,4 +9,6 @@ docker install
  
 ![alt text](image-1.png)
 
-Just testing the scyn on my laptop and computer
+Just testing the sync on my laptop and computer
+
+This is epic. If your reading this I am testing code sync on 2 different devices

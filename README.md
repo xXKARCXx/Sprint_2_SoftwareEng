@@ -8,3 +8,5 @@ This is how to save to git Using git commands:
 docker install
  
 ![alt text](image-1.png)
+
+Just testing the scyn on my laptop and computer

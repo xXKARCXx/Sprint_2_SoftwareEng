@@ -7,3 +7,9 @@ Make sure before updating and pushing code or any changes , pull orgin first the
 
 Just testing the sync on my laptop and computer
 This is epic. If your reading this I am testing code sync on 2 different devices
+
+This for the breif here:
+---->     https://moodle.roehampton.ac.uk/pluginfile.php/4735021/mod_resource/content/7/SECoursework2025.pdf   <----
+
+requirments :
+     --->  https://moodle.roehampton.ac.uk/pluginfile.php/5017988/mod_resource/content/8/Group%20project%20requirements.pdf <---

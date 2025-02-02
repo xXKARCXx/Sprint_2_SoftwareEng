@@ -1,7 +1,7 @@
 This is how to save to git Using git commands:
 
-![alt text](image.png)
+![alt text](image4.png)
 
 docker install
  
-![alt text](image-1.png)
+![alt text](image-3.png)

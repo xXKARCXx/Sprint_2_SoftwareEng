@@ -16,4 +16,4 @@ requirments :
 
 
 Check list:
-![alt text](image.png)
+![alt text](checklist_sprint1.png)

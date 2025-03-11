@@ -1,9 +1,13 @@
+
+
 // Import express.js
 const express = require("express");
 
 // Create express app
 var app = express();
-
+app.set('view engine', 'pug');
+app.set('views', './app/views');
+ 
 // Add static files location
 app.use(express.static("static"));
 
@@ -45,4 +49,28 @@ app.get("/hello/:name", function(req, res) {
 // Start server on port 3000
 app.listen(3000,function(){
     console.log(`Server running at http://127.0.0.1:3000/`);
+});
+
+//refactor app
+app.get("/all-student-formatted", function(req, res){
+    var sql = 'select * from Student';
+    db.query(sql).them(results => {
+
+        res.render('all-student', {data: result});
+    });
+});
+
+app.get("/", function(req, res) {
+    res.render("index");
+});
+
+app.get("/", function(req, res){
+    res.render("index", {'title':'My index page', 'heading':'My heading'});
+});
+
+app.get("/", function(req, res){
+    //set up array data
+    var test_data = ['one', 'two','three', 'four'];
+    // send the array via template as varible calls data
+    res.render("index", {'title': 'My index page', 'heading':'My heading', 'data':test_data});
 });

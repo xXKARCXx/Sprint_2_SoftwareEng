@@ -53,10 +53,10 @@ app.listen(3000,function(){
 
 //refactor app
 app.get("/all-student-formatted", function(req, res){
-    var sql = 'select * from Student';
-    db.query(sql).them(results => {
+    var sql = 'select * from Students';
+    db.query(sql).then(results => {
 
-        res.render('all-student', {data: result});
+        res.render('all-student', {data: results});
     });
 });
 

@@ -60,6 +60,14 @@ app.get("/all-student-formatted", function(req, res){
     });
 });
 
+app.get("/Tips", function(req, res){
+    var sql = 'select * from Tips_Table';
+    db.query(sql).then(results => {
+
+        res.render('all-tips', {data: results});
+    });
+});
+
 app.get("/", function(req, res) {
     res.render("index");
 });

@@ -1,29 +1,46 @@
-const express = require('express');
-const app = express();
-const db = require('./services/db');
+const express = require("express");
+const path = require("path");
+const db = require("./services/db");
 
-app.set('view engine', 'pug');
-app.set('views', './views');
+const app = express();
+
+// Set view engine
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+
+// Serve static files (CSS, images, etc.)
+app.use(express.static(path.join(__dirname, "../public"))); 
 
 // Fetch all users
 app.get("/users", async (req, res) => {
-    db.getUsers().then(results => {
-        res.render('users', { data: results });
-    });
+    try {
+        const users = await db.getUsers();
+        res.render("users", { data: users });
+    } catch (err) {
+        res.status(500).send("Error fetching users");
+    }
 });
 
 // Fetch all games
 app.get("/games", async (req, res) => {
-    db.getGames().then(results => {
-        res.render('games', { data: results });
-    });
+    try {
+        const games = await db.getGames();
+        res.render("games", { data: games });
+    } catch (err) {
+        res.status(500).send("Error fetching games");
+    }
 });
 
 // Fetch all tips with relational data
 app.get("/tips", async (req, res) => {
-    db.getTips().then(results => {
-        res.render('all-tips', { data: results });
-    });
+    try {
+        const tips = await db.getTips();
+        res.render("all-tips", { data: tips });
+    } catch (err) {
+        res.status(500).send("Error fetching tips");
+    }
 });
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+// Start server
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Server running on http://127.0.0.1:${PORT}`));

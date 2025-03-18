@@ -3,8 +3,8 @@ const mysql = require("mysql2/promise");
 const pool = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "", // Update if your MySQL has a password
-    database: "sd2-db", // Change to your actual database name
+    password: "",
+    database: "sd2-db.sql",
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0

@@ -1,29 +1,34 @@
-require("dotenv").config();
-
 const mysql = require('mysql2/promise');
+const pool = mysql.createPool({ host: 'localhost', user: 'root', password: '', database: 'your_database_name' });
 
-const config = {
-  db: { /* do not put password or any sensitive info here, done only for demo */
-    host: process.env.DB_CONTAINER,
-    port: process.env.DB_PORT,
-    user: process.env.MYSQL_ROOT_USER,
-    password: process.env.MYSQL_ROOT_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    waitForConnections: true,
-    connectionLimit: 2,
-    queueLimit: 0,
-  },
-};
-  
-const pool = mysql.createPool(config.db);
-
-// Utility function to query the database
 async function query(sql, params) {
-  const [rows, fields] = await pool.execute(sql, params);
-
+  const [rows] = await pool.execute(sql, params);
   return rows;
 }
 
-module.exports = {
-  query,
+// Fetch all users
+async function getUsers() {
+  return await query("SELECT * FROM Users");
 }
+
+// Fetch all games
+async function getGames() {
+  return await query("SELECT * FROM Games");
+}
+
+// Fetch all tips with user and game details
+async function getTips() {
+  return await query(`
+    SELECT 
+      Tips_Table.id, 
+      Users.username AS author,
+      Games.game_name AS game,
+      Tips_Table.title, 
+      Tips_Table.description 
+    FROM Tips_Table 
+    JOIN Users ON Tips_Table.user_id = Users.id 
+    JOIN Games ON Tips_Table.game_id = Games.id
+  `);
+}
+
+module.exports = { query, getUsers, getGames, getTips };

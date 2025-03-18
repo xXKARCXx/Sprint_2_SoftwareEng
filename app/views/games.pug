@@ -1,0 +1,13 @@
+extends layout
+block content
+    h1 Games
+    table(border=1)
+        tr
+            th ID
+            th Name
+            th Genre
+        each game in data
+            tr
+                td #{game.id}
+                td #{game.game_name}
+                td #{game.genre}

@@ -1,0 +1,13 @@
+extends layout
+block content
+    h1 Users
+    table(border=1)
+        tr
+            th ID
+            th Username
+            th Email
+        each user in data
+            tr
+                td #{user.id}
+                td #{user.username}
+                td #{user.email}

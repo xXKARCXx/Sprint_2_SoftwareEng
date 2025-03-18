@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "", // Update if your MySQL has a password
-    database: "your_database_name", // Change to your actual database name
+    database: "sd2-db", // Change to your actual database name
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
